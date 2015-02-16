@@ -7,7 +7,9 @@ using System.IO;
 using Newtonsoft.Json;
 
 //using Android.Content.Res;
+#if __ANDROID__
 using Android.App;
+#endif
 
 using HologramSpriteManager;
 

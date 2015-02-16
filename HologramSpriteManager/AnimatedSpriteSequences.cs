@@ -42,7 +42,7 @@ namespace HologramSpriteManager
         {
 			if (fromExternal) {
 				using (var fileStream = File.Open (SpriteMapName,FileMode.Open,FileAccess.Read)) {
-					SpriteMapTexture = Texture2D.FromStream (SamsungKids.SamsungKids.graphics.GraphicsDevice, fileStream); 
+					//SpriteMapTexture = Texture2D.FromStream (SamsungKids.SamsungKids.graphics.GraphicsDevice, fileStream); 
 				}
 			}
 			else
