@@ -41,6 +41,11 @@ namespace HologramSpriteManager
             Sequences.SetAnimation(sAnim);
 
         }
+        public void ChangeAnimation(string sAnim,bool bForceRestart)
+        {
+            Sequences.SetAnimation(sAnim,bForceRestart);
+
+        }
 
 		/// <summary>
 		/// Changes the animation.

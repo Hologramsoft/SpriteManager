@@ -241,6 +241,21 @@ namespace HologramSpriteManager
                 }
             }
         }
+        public void SetAnimation(string sSequence,bool bForceRestart)
+        {
+            if (!bForceRestart && sCurrentSequence == sSequence)
+                return;
+
+            sCurrentSequence = sSequence;
+            for (int i = 0; i < AnimationSequences.Count(); i++)
+            {
+                if (AnimationSequences[i].AnimationName == sCurrentSequence)
+                {
+                    AnimationSequences[i].fLastAnimationStartTime = SpriteManager.GameTime;
+                    break;
+                }
+            }
+        }
 
 		public async void SetAnimation(string startAnim,string endAnim,int duration)
 		{

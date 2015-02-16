@@ -7,9 +7,7 @@ using System.IO;
 using Newtonsoft.Json;
 
 //using Android.Content.Res;
-#if __ANDROID__
-using Android.App;
-#endif
+//using Android.App;
 
 using HologramSpriteManager;
 
@@ -18,7 +16,7 @@ namespace HologramSpriteManager
 {
     class AnimationSpecReader
     {
-		public static AnimatedSprite PopulateAnimations(string sFile,bool fromExternal = false)
+        public static T PopulateAnimations<T>(string sFile, bool fromExternal = false) where T : AnimatedSprite 
         {
 
             #if __ANDROID__
@@ -47,13 +45,20 @@ namespace HologramSpriteManager
 
 			Meta.PopulateSequence(fromExternal);
 
+            /*
+            if (Meta.Type == AnimationType.Character)
+            {
+                Character character = new Character(Meta);
+                return character;
+            }*/
             if (Meta.Type == AnimationType.Animated)
             {
 
                 var ctor = typeof(T).GetConstructor(new Type[] { typeof(AnimatedSpriteSequences) });
                 return (T)ctor.Invoke(new object[] { Meta });
+                //AnimatedSprite _animated = new AnimatedSprite(Meta);
+                //return _animated;
             }
-
 
 
             //Console.WriteLine("spec output: " + text);
