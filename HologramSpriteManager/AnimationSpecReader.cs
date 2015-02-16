@@ -45,17 +45,13 @@ namespace HologramSpriteManager
 
 			Meta.PopulateSequence(fromExternal);
 
-            /*
-            if (Meta.Type == AnimationType.Character)
-            {
-                Character character = new Character(Meta);
-                return character;
-            }*/
             if (Meta.Type == AnimationType.Animated)
             {
-                AnimatedSprite _animated = new AnimatedSprite(Meta);
-                return _animated;
+
+                var ctor = typeof(T).GetConstructor(new Type[] { typeof(AnimatedSpriteSequences) });
+                return (T)ctor.Invoke(new object[] { Meta });
             }
+
 
 
             //Console.WriteLine("spec output: " + text);
